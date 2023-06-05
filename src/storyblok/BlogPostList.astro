@@ -1,0 +1,64 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { useStoryblokApi } from "@storyblok/astro";
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get("cdn/stories", {
+  version: import.meta.env.DEV ? "draft" : "published",
+  content_type: "blogPost",
+});
+
+const posts = data.stories.map(
+  (story: {
+    content: {
+      title: string;
+      description: string;
+      header: [{ filename: string }];
+    };
+    published_at: string | number | Date;
+    full_slug: string;
+  }) => {
+    return {
+      header: story.content.header,
+      title: story.content.title,
+      date: new Date(story.published_at).toLocaleDateString("en-US", {
+        dateStyle: "full",
+      }),
+      description: story.content.description,
+      slug: story.full_slug,
+    };
+  }
+);
+
+const { blok } = Astro.props;
+---
+
+<ul
+  {...storyblokEditable(blok)}
+  class="text-center grid grid-cols-3 gap-2 mx-24 mt-4"
+>
+  {
+    posts.map(
+      (post: {
+        header: { filename: string | null | undefined };
+        date: string;
+        slug: string | URL | null | undefined;
+        title: string;
+        description: string;
+      }) => (
+        <li class="leading-8 border-2 border-black pb-2">
+          <img src={post.header.filename} class="rounded-b-xl home-img mb-4" />
+
+          <a href={post.slug} class="text-3xl hover:underline font-bold">
+            {post.title}
+          </a>
+          <p class="px-8 pt-4">
+            {post.description}
+          </p>
+          <time class="block mt-4 font-light">{post.date}</time>
+        </li>
+      )
+    )
+  }
+</ul>
