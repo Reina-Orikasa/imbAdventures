@@ -2,6 +2,9 @@
 import { storyblokEditable } from "@storyblok/astro";
 import { useStoryblokApi } from "@storyblok/astro";
 
+import { Image } from '@astrojs/image/components';
+
+
 const storyblokApi = useStoryblokApi();
 
 const { data } = await storyblokApi.get("cdn/stories", {
@@ -49,6 +52,7 @@ const { blok } = Astro.props;
       }) => (
         <li class="leading-8 border-2 border-black pb-2">
           <img src={post.header.filename} class="rounded-b-xl home-img mb-4" />
+          <Image src={post.header.filename ?? ''} alt="header image" width={2160} height={1626} />
 
           <a href={post.slug} class="text-3xl hover:underline font-bold">
             {post.title}

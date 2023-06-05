@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import storyblok from "@storyblok/astro";
 import { loadEnv } from "vite";
 import tailwind from "@astrojs/tailwind";
+import image from "@astrojs/image";
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 
@@ -19,5 +20,5 @@ export default defineConfig({
       // Choose your Storyblok space region
       region: "eu" // optional,  or 'eu' (default)
     }
-  }), tailwind()]
+  }), tailwind(), image()]
 });
