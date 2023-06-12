@@ -7,7 +7,7 @@ const content = renderRichText(blok.content);
 <article {...storyblokEditable(blok)}>
   <img src={blok.header.filename} class="rounded-b-[7rem]" id="header" />
   <div class="flex justify-center align-middle text-center">
-    <div class="rounded-xl py-6 px-9 bg-slate-700 text-white w-1/2 -mt-8">
+    <div class="rounded-xl py-6 px-9 bg-slate-700 text-white w-3/4 -mt-12">
       <h1 class="text-5xl font-bold pb-4">{blok.title}</h1>
       <p class="text-xl my-4">{blok.description}</p>
       <p class="font-light">{blok.publishDate.split(' ')[0]}</p>
