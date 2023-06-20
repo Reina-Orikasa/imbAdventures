@@ -19,12 +19,16 @@ const posts = data.stories.map(
       header: [{ filename: string }];
     };
     published_at: string | number | Date;
+    created_at: string | number | Date;
     full_slug: string;
   }) => {
     return {
       header: story.content.header,
       title: story.content.title,
       date: new Date(story.published_at).toLocaleDateString("en-US", {
+        dateStyle: "full",
+      }),
+      create_date: new Date(story.created_at).toLocaleDateString("en-us", {
         dateStyle: "full",
       }),
       description: story.content.description,
@@ -45,6 +49,7 @@ const { blok } = Astro.props;
       (post: {
         header: { filename: string | null | undefined };
         date: string;
+        create_date: string;
         slug: string | URL | null | undefined;
         title: string;
         description: string;
@@ -63,7 +68,7 @@ const { blok } = Astro.props;
             {post.title}
           </a>
           <p class="px-8 pt-4">{post.description}</p>
-          <time class="block mt-4 font-light">{post.date}</time>
+          <time class="block mt-4 font-light">{post.create_date}</time>
         </li>
       )
     )

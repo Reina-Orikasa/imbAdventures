@@ -10,11 +10,16 @@ const content = renderRichText(blok.content);
     <div class="rounded-xl py-6 px-9 bg-slate-700 text-white w-3/4 -mt-12">
       <h1 class="text-5xl font-bold pb-4">{blok.title}</h1>
       <p class="text-xl my-4">{blok.description}</p>
-      <p class="font-light">{blok.publishDate.split(' ')[0]}</p>
+      <p class="font-light">
+        {
+          new Date(blok.publishDate).toLocaleDateString("en-us", {
+            dateStyle: "full",
+          })
+        }
+      </p>
     </div>
   </div>
   <div class="mx-48 my-9">
-   <Fragment set:html={content} /> 
+    <Fragment set:html={content} />
   </div>
 </article>
-
