@@ -35,13 +35,13 @@ const content = renderRichText(blok.content);
   <form name="contact" class="border-2 border-black text-center pt-2 pb-4 space-y-4" netlify>
     <h2>Comments?</h2>
     <p>
-      <label>Name: <input type="text" name="name" class="border-2 border-black" /></label>
+      <label>Name: <input type="text" name="name" class="border-2 border-black" required /></label>
     </p>
     <p>
-      <label>Email: <input type="email" name="email" class="border-2 border-black" /></label>
+      <label>Email: <input type="email" name="email" class="border-2 border-black" required /></label>
     </p>
     <p>
-      <label>Message: <textarea name="message" class="border-2 border-black"></textarea></label>
+      <label>Message: <textarea name="message" class="border-2 border-black" required></textarea></label>
     </p>
     <p>
       <button type="submit" class="border-2 border-black text-black p-2 rounded-xl"
