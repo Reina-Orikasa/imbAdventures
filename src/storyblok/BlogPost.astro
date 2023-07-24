@@ -32,4 +32,22 @@ const content = renderRichText(blok.content);
   <div class="mx-5 md:mx-48 my-9">
     <Fragment set:html={content} />
   </div>
+  <form name="contact" class="border-2 border-black text-center pt-2 pb-4 space-y-4" netlify>
+    <h2>Comments?</h2>
+    <p>
+      <label>Name: <input type="text" name="name" class="border-2 border-black" /></label>
+    </p>
+    <p>
+      <label>Email: <input type="email" name="email" class="border-2 border-black" /></label>
+    </p>
+    <p>
+      <label>Message: <textarea name="message" class="border-2 border-black"></textarea></label>
+    </p>
+    <p>
+      <button type="submit" class="border-2 border-black text-black p-2 rounded-xl"
+        >Send</button
+      >
+    </p>
+    
+  </form>
 </article>
